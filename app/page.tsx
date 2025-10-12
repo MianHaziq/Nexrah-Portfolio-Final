@@ -2,7 +2,6 @@
 import { navItems } from "@/data/index";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
-import Approach from "@/components/Approach";
 import FloatingNav  from "@/components/ui/FloatingNavbar";
 import Contact from "@/components/ContactPage";
 import ChromaGrid from "@/components/ChromaGrid";
@@ -25,7 +24,6 @@ export default function Home() {
         <ChromaGrid/>
         <TestimonalsDemo/>
        <Contact/>
-        <Approach />
         </div>
         <Footer />
       </div>
