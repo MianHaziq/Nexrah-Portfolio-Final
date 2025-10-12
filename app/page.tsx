@@ -7,7 +7,7 @@ import Contact from "@/components/ContactPage";
 import ChromaGrid from "@/components/ChromaGrid";
 import ProjectsPage from "@/components/ProjectsPage";
 import { TestimonalsDemo } from "@/components/TestimonalPage";
-import TextMarqueePage from '../components/TextMarqueePage'
+import TextMarqueePage from '../components/TextMarqueePage';
 export default function Home() {
   return (
     <>
@@ -16,16 +16,36 @@ export default function Home() {
      
       
         <FloatingNav navItems={navItems} />
-        <Hero />  
-        <TextMarqueePage/>
-       
-        <div className="bg-black p-0 m-0 " >
-        <ProjectsPage/>
-        <ChromaGrid/>
-        <TestimonalsDemo/>
-       <Contact/>
-        </div>
-        <Footer />
+     <section className="hero">
+      <div className="h-screen w-screen">
+  <Hero />
+  </div>
+</section>
+
+<section>
+  <TextMarqueePage />
+</section>
+
+<section>
+  <ProjectsPage />
+</section>
+
+<section>
+  <ChromaGrid />
+</section>
+
+<section>
+  <TestimonalsDemo />
+</section>
+
+<section>
+  <Contact />
+</section>
+
+<section className="footer">
+  <Footer />
+</section>
+
       </div>
     </main>
     </>

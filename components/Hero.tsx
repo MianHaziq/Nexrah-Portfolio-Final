@@ -112,6 +112,7 @@ const Hero: React.FC = () => {
   return (
 
     <>
+<section className="relative h-screen overflow-hidden">
     <Background/>
    
     <div className="pb-20 pt-36 min-h-screen flex items-center justify-center">
@@ -144,6 +145,7 @@ const Hero: React.FC = () => {
         </a>
       </div>
     </div>
+    </section>
      </>
   );
 };

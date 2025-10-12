@@ -6,7 +6,7 @@ const Background = () => {
   return (
     // make the outer wrapper non-interactive so UI above it doesn't block,
     // but the inner Hyperspeed div will explicitly accept pointer events.
-    <div className="fixed inset-0 w-full h-full ">
+    <div className="absolute inset-0 w-full h-screen ">
       <Hyperspeed
         effectOptions={{
           onSpeedUp: () => {},
