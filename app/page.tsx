@@ -22,8 +22,8 @@ export default function Home() {
         <Hero />  
         <TextMarqueePage/>
         {/* <GridSection/> */}
-        {/* <ProjectsPage/> */}
         <div className="bg-black p-0 m-0 " >
+        <ProjectsPage/>
         <ChromaGrid/>
         <TestimonalsDemo/>
        <Contact/>
