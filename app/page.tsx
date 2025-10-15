@@ -6,7 +6,7 @@ import FloatingNav  from "@/components/ui/FloatingNavbar";
 import Contact from "@/components/ContactPage";
 import ChromaGrid from "@/components/ChromaGrid";
 import ProjectsPage from "@/components/ProjectsPage";
-import { TestimonalsDemo } from "@/components/TestimonalPage";
+import  TestimonialSection  from "@/components/TestimonialSection";
 import TextMarqueePage from '../components/TextMarqueePage';
 export default function Home() {
   return (
@@ -35,7 +35,7 @@ export default function Home() {
 </section>
 
 <section>
-  <TestimonalsDemo />
+  <TestimonialSection />
 </section>
 
 <section>
