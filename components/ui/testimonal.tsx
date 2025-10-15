@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/src/lib/utils";
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
 import Image from "next/image";

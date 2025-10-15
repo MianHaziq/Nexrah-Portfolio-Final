@@ -1,5 +1,5 @@
 "use client";
-import { navItems } from "@/data/index";
+import { navItems } from "@/src/data/index";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
 import FloatingNav  from "@/components/ui/FloatingNavbar";
@@ -7,7 +7,7 @@ import Contact from "@/components/ContactPage";
 import ChromaGrid from "@/components/ChromaGrid";
 import ProjectsPage from "@/components/ProjectsPage";
 import  TestimonialSection  from "@/components/TestimonialSection";
-import TextMarqueePage from '../components/TextMarqueePage';
+import TextMarqueePage from '@/components/TextMarqueePage';
 export default function Home() {
   return (
     <>

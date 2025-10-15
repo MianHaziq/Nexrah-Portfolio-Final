@@ -5,7 +5,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ReactLenis from "lenis/react";
-import { cn } from "@/lib/utils";
+import { cn } from "@/src/lib/utils";
 
 interface CardData {
   id: number | string;

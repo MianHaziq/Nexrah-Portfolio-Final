@@ -1,6 +1,6 @@
 import { FaLocationArrow } from "react-icons/fa6";
 
-import { socialMedia } from "@/data";
+import { socialMedia } from "@/src/data";
 import MagicButton from "./MagicButton";
 import ScrollVelocity from './ScrollVelocity';
 

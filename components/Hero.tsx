@@ -113,7 +113,6 @@ const Hero: React.FC = () => {
 
     <>
 <section className="relative min-h-screen w-full overflow-visible flex items-center justify-center">
-
     <Background/>
    
     <div className="pb-20 pt-36 min-h-screen flex items-center justify-center">
