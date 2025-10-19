@@ -8,6 +8,7 @@ import ChromaGrid from "@/components/ChromaGrid";
 import ProjectsPage from "@/components/ProjectsPage";
 import  TestimonialSection  from "@/components/TestimonialSection";
 import TextMarqueePage from '@/components/TextMarqueePage';
+import AboutUs from "@/components/AboutUs";
 export default function Home() {
   return (
     <>
@@ -31,7 +32,7 @@ export default function Home() {
 </section>
 
 <section>
-  <ChromaGrid />
+  <AboutUs />
 </section>
 
 <section>

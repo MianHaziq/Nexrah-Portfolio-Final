@@ -39,59 +39,59 @@ const ChromaGrid: React.FC<ChromaGridProps> = ({
 
   const demo: ChromaItem[] = [
     {
-      image: "/HaziqP.jpg",
-      title: "Mian Haziq",
-      subtitle: "Full Stack Developer",
-      handle: "@mianhaziq",
-      borderColor: "#4F46E5",
-      gradient: "linear-gradient(145deg,#4F46E5,#000)",
-      url: "",
-    },
-    {
-      image: "/HaziqP.jpg",
-      title: "Mian Haziq",
+      image: "/ali_dp.jpg",
+      title: "Ali Javaid",
       subtitle: "DevOps Engineer",
-      handle: "@mianhaziq",
+      handle: "@alijavaid",
       borderColor: "#10B981",
       gradient: "linear-gradient(210deg,#10B981,#000)",
       url: "",
     },
     {
-      image: "/HaziqP.jpg",
-      title: "Mian Haziq",
-      subtitle: "UI/UX Designer",
-      handle: "@mianhaziq",
+      image: "/osama_dp.jpg",
+      title: "Osama Amjad",
+      subtitle: "Full Stack Developer",
+      handle: "@osamaamjad",
       borderColor: "#F59E0B",
       gradient: "linear-gradient(165deg,#F59E0B,#000)",
       url: "",
     },
-    {
-      image: "/HaziqP.jpg",
-      title: "Mian Haziq",
-      subtitle: "Data Scientist",
-      handle: "@mianhaziq",
-      borderColor: "#EF4444",
-      gradient: "linear-gradient(195deg,#EF4444,#000)",
+      {
+      image: "/salman_dp.jpg",
+      title: "Salman",
+      subtitle: "UI/UX Designer",
+      handle: "@salman",
+      borderColor: "#F59E0B",
+   gradient: "linear-gradient(225deg,#8B5CF6,#000)",
       url: "",
     },
-    {
-      image: "/HaziqP.jpg",
-      title: "Mian Haziq",
-      subtitle: "Mobile Developer",
-      handle: "@mianhaziq",
-      borderColor: "#8B5CF6",
-      gradient: "linear-gradient(225deg,#8B5CF6,#000)",
+{
+      image: "/haziq_dp.jpg",
+      title: "Haziq Nazeer",
+      subtitle: "Full Stack Developer",
+      handle: "@haziqnazeer",
+      borderColor: "#4F46E5",
+      gradient: "linear-gradient(145deg,#4F46E5,#000)",
       url: "",
     },
-    {
-      image: "/HaziqP.jpg",
-      title: "Mian Haziq",
-      subtitle: "Cloud Architect",
-      handle: "@mianhaziq",
-      borderColor: "#06B6D4",
-      gradient: "linear-gradient(135deg,#06B6D4,#000)",
-      url: "",
-    },
+    // {
+    //   image: "/haziqP.jpg",
+    //   title: "Mian Haziq",
+    //   subtitle: "Mobile Developer",
+    //   handle: "@mianhaziq",
+    //   borderColor: "#8B5CF6",
+    //   gradient: "linear-gradient(225deg,#8B5CF6,#000)",
+    //   url: "",
+    // },
+    // {
+    //   image: "/haziqP.jpg",
+    //   title: "Mian Haziq",
+    //   subtitle: "Cloud Architect",
+    //   handle: "@mianhaziq",
+    //   borderColor: "#06B6D4",
+    //   gradient: "linear-gradient(135deg,#06B6D4,#000)",
+    //   url: "",
+    // },
   ];
 
   const data = items?.length ? items : demo;
@@ -147,12 +147,12 @@ const ChromaGrid: React.FC<ChromaGridProps> = ({
   };
 
   return (
-    <div className="bg-black h-auto w-full">
+    <div className="bg-black h-auto w-full ">
       <div
         ref={rootRef}
         onPointerMove={handleMove}
         onPointerLeave={handleLeave}
-        className={`relative bg-black w-full h-full flex flex-wrap justify-center items-start gap-3 ${className}`}
+        className={`relative bg-black w-full h-full flex flex-wrap justify-center items-start gap-3 sm:gap-3 md:gap-6 lg:gap-6 ${className}`}
         style={
           {
             "--r": `${radius}px`,

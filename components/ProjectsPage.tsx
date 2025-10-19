@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useEffect, useRef } from "react";
 import ThreeDCard, { Project } from "./ThreeDCard";
 import gsap from "gsap";
@@ -46,7 +47,7 @@ export default function ProjectsPage() {
         gsap.from(card, {
           opacity: 0,
           y: 40,
-          duration: 2.5,
+          duration: 0.6,
           ease: "power3.inOut",
           scrollTrigger: {
             trigger: card,
@@ -64,13 +65,15 @@ export default function ProjectsPage() {
   }, []);
 
   return (
-    <section className="w-full px-4 sm:px-6 lg:px-8 py-8 bg-black">
-      <div className="max-w-[1200px] mx-auto">
-        <h1 className="text-4xl sm:text-4xl font-semibold mb-6 text-center">Projects</h1>
+    <section className="w-full min-h-screen flex flex-col items-center justify-center bg-black text-white px-4 py-10">
+      <div className="max-w-[1200px] w-full">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-amber-400 uppercase mb-10 text-center">
+          Projects
+        </h1>
 
         <div
           ref={gridRef}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center"
         >
           {projectsData.map((p) => (
             <ThreeDCard key={p.id ?? p.title} data={p} />

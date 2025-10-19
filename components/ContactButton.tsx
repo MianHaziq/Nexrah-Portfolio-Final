@@ -60,9 +60,9 @@ const ContactButton: React.FC<Props> = ({
 
   const baseClasses =
     "group relative px-2 py-2 md:px-10 md:py-5 rounded-md md:rounded-lg " +
-    "bg-gradient-to-br from-amber-400 via-yellow-200 to-yellow-600 " +
+    "bg-gradient-to-br from-amber-400 via-yellow-300 to-amber-600 " +
     "text-black font-bold tracking-wider uppercase text-xs md:text-sm " +
-    "hover:from-amber-500 hover:via-yellow-300 hover:to-yellow-600 " +
+    "hover:from-amber-500 hover:via-yellow-300 hover:to-amber-600 " +
     "transform hover:rotate-1 transition-all duration-300 ease-out " +
     "shadow-[0_8px_30px_rgba(255,191,0,0.25),0_0_12px_rgba(255,173,0,0.2)] " +
     "hover:shadow-[0_10px_40px_rgba(255,191,0,0.35),0_0_18px_rgba(255,173,0,0.35)] " +

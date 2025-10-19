@@ -6,6 +6,8 @@ import Image from "next/image";
 import { useRouter, usePathname } from "next/navigation";
 import { TextRoll } from "./TextRoll"; // <- adjust path as needed
 import ContactButton from "../ContactButton"; // <-- your button
+import ContactButton_1 from "../ContactButton_1";
+
 
 interface NavItem {
   name: string;
@@ -79,6 +81,7 @@ const FloatingNav: React.FC<FloatingNavbarProps> = ({ navItems }) => {
 
         {/* Right controls */}
         <div className="flex md:order-2 items-center gap-3">
+         
           <ContactButton href="/contact" label="Contact Us" />
 
           {/* Mobile hamburger */}
