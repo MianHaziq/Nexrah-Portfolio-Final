@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title: "NEXRAH",
   description: "Where Ideas Evolve into Digital Power",
   icons: {
-    icon: "/nexrah-black.png",
+    icon: "/logo_svg.png",
   },
 };
 

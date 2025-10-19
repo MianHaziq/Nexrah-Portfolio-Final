@@ -19,12 +19,13 @@ const ContactButton: React.FC<Props> = ({
 
   const inner = (
     <>
-      <span className="flex items-center gap-2 relative z-10">
+      <span className="flex items-center gap-1.5 sm:gap-2 relative z-10">
+        {/* 🔹 Slightly bigger icons for better balance */}
         <svg
           stroke="currentColor"
           fill="none"
           viewBox="0 0 24 24"
-          className="w-4 h-4 md:w-5 md:h-5"
+          className="w-4 h-4 sm:w-5 sm:h-5"
           aria-hidden
         >
           <path
@@ -40,7 +41,7 @@ const ContactButton: React.FC<Props> = ({
           viewBox="0 0 24 24"
           stroke="currentColor"
           fill="none"
-          className="w-3 h-3 md:w-4 md:h-4 transition-transform duration-500 group-hover:translate-x-2"
+          className="w-3 h-3 sm:w-4 sm:h-4 transition-transform duration-500 group-hover:translate-x-2"
           aria-hidden
         >
           <path
@@ -52,23 +53,25 @@ const ContactButton: React.FC<Props> = ({
         </svg>
       </span>
 
-      <div className="absolute inset-0 rounded-md md:rounded-lg opacity-50 group-hover:opacity-80 transition-opacity duration-300 bg-gradient-to-tl from-yellow-200/40 via-transparent to-transparent" />
+      {/* Gradient overlay remains same */}
+      <div className="absolute inset-0 rounded-md opacity-50 group-hover:opacity-80 transition-opacity duration-300 bg-gradient-to-tl from-yellow-200/40 via-transparent to-transparent" />
 
       <div className="absolute -left-full top-0 h-full w-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:translate-x-[200%] transition-transform duration-700 ease-out" />
     </>
   );
 
+  // 🔹 Slightly larger padding + fully responsive sizes
   const baseClasses =
-    "group relative px-2 py-2 md:px-10 md:py-5 rounded-md md:rounded-lg " +
+    "group relative px-4 py-2 sm:px-6 sm:py-3 md:px-8 md:py-3.5 rounded-md md:rounded-lg " + // 🔹 bigger padding for medium+ screens
     "bg-gradient-to-br from-amber-400 via-yellow-300 to-amber-600 " +
-    "text-black font-bold tracking-wider uppercase text-xs md:text-sm " +
+    "text-black font-bold tracking-wide uppercase text-xs sm:text-sm md:text-base " + // 🔹 responsive font sizes
     "hover:from-amber-500 hover:via-yellow-300 hover:to-amber-600 " +
     "transform hover:rotate-1 transition-all duration-300 ease-out " +
-    "shadow-[0_8px_30px_rgba(255,191,0,0.25),0_0_12px_rgba(255,173,0,0.2)] " +
-    "hover:shadow-[0_10px_40px_rgba(255,191,0,0.35),0_0_18px_rgba(255,173,0,0.35)] " +
+    "shadow-[0_5px_20px_rgba(255,191,0,0.25),0_0_8px_rgba(255,173,0,0.2)] " + // 🔹 moderate shadow
+    "hover:shadow-[0_8px_30px_rgba(255,191,0,0.35),0_0_12px_rgba(255,173,0,0.35)] " +
     "active:scale-90 overflow-hidden " +
     "before:absolute before:inset-0 before:rounded-md md:before:rounded-lg " +
-    "before:border-2 before:border-yellow-400/50 before:transition-all before:duration-300 " +
+    "before:border-[1.5px] before:border-yellow-400/50 before:transition-all before:duration-300 " +
     "hover:before:border-yellow-300 hover:before:scale-105";
 
   if (href && (href.startsWith("http://") || href.startsWith("https://"))) {

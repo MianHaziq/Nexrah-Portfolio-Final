@@ -11,28 +11,29 @@ const projectsData: Project[] = [
   {
     id: "explainmate",
     title: "EXPLAINMATE",
-    subtitle: "A Graphic Video Editing Focused Website",
+    subtitle: "Graphic Video Editing Website",
     imageSrc: "/exclimate.png",
-    seeUrl: "#",
-    liveUrl: "#",
+    seeUrl: "https://www.explanimate.com.au/",
+    liveUrl: "https://www.explanimate.com.au/",
   },
   {
-    id: "explainmate-2",
-    title: "EXPLAINMATE",
-    subtitle: "A Graphic Video Editing Focused Website",
-    imageSrc: "/exclimate.png",
-    seeUrl: "#",
-    liveUrl: "#",
+    id: "jalal-group",
+    title: "Jalal Group of Companies",
+    subtitle: "Industrial & Energy Solutions",
+    imageSrc: "/jalalgrp_img.png",
+    seeUrl: "https://www.jalalgrp.com/",
+    liveUrl: "https://www.jalalgrp.com/",
   },
   {
-    id: "explainmate-3",
-    title: "EXPLAINMATE",
-    subtitle: "A Graphic Video Editing Focused Website",
-    imageSrc: "/exclimate.png",
-    seeUrl: "#",
-    liveUrl: "#",
+    id: "tilla-kheri",
+    title: "Tilla Kheri",
+    subtitle: "Handcrafted Footwear Brand",
+    imageSrc: "/tillakheri_img.png",
+    seeUrl: "https://tillakheri.com/",
+    liveUrl: "https://tillakheri.com/",
   },
 ];
+
 
 export default function ProjectsPage() {
   const gridRef = useRef<HTMLDivElement | null>(null);

@@ -1,12 +1,10 @@
-// "use client";
+"use client";
 
 import Hyperspeed from "./Hyperspeed";
 
 const Background = () => {
   return (
-    // make the outer wrapper non-interactive so UI above it doesn't block,
-    // but the inner Hyperspeed div will explicitly accept pointer events.
-    <div className="absolute inset-0 w-full h-screen ">
+    <div className="absolute inset-0 w-full h-screen">
       <Hyperspeed
         effectOptions={{
           onSpeedUp: () => {},
@@ -46,6 +44,8 @@ const Background = () => {
           },
         }}
       />
+
+      <div className="absolute bottom-0 left-0 w-full h-8 bg-gradient-to-t from-black via-black/70 to-transparent pointer-events-none" />
     </div>
   );
 };

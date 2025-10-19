@@ -65,6 +65,15 @@ const ChromaGrid: React.FC<ChromaGridProps> = ({
    gradient: "linear-gradient(225deg,#8B5CF6,#000)",
       url: "",
     },
+    {
+      image: "/muzamil_dp.jpg",
+      title: "Muzammil Sher",
+      subtitle: "AI/ML Engineer",
+      handle: "@muzammil_sher",
+      borderColor: "#4F46E5",
+      gradient: "linear-gradient(135deg,#06B6D4,#000)",
+      url: "",
+    },
 {
       image: "/haziq_dp.jpg",
       title: "Haziq Nazeer",

@@ -27,13 +27,11 @@ const Typewriter: React.FC<TypewriterProps> = ({
   const [wordIndex, setWordIndex] = useState(0);
   const timerRef = useRef<number | null>(null);
 
-  // Start after delay
   useEffect(() => {
     const t = window.setTimeout(() => setStarted(true), startDelay);
     return () => window.clearTimeout(t);
   }, [startDelay]);
 
-  // Typing/deleting logic
   useEffect(() => {
     if (!started) return;
     const current = words[wordIndex];
@@ -112,7 +110,7 @@ const Hero: React.FC = () => {
   return (
 
     <>
-<section className="relative min-h-screen w-full overflow-visible flex items-center justify-center">
+<section className="relative min-h-screen w-full overflow-visible flex items-center justify-center select-none">
     <Background/>
    
     <div className="pb-20 pt-36 min-h-screen flex items-center justify-center">
@@ -125,7 +123,7 @@ const Hero: React.FC = () => {
           Where Ideas Evolve into Digital Power
         </p>
 
-        <h1 className="text-[36px] md:text-5xl lg:text-6xl font-semibold mb-4">
+        <h1 className="text-[36px] md:text-5xl lg:text-6xl font-extrabold mb-4">
           Transforming Concepts into Seamless{" "}
           <Typewriter
             words={[" Experience!", " Interfaces!"]}
@@ -140,9 +138,9 @@ const Hero: React.FC = () => {
           At <span className="font-semibold text-amber-400">Nexrah</span>, we craft exceptional web experiences that elevate brands and accelerate growth.
         </p>
 
-        <a href="#about">
+        {/* <a href="#about">
           <WorkButton title="Contact Us" position="right" />
-        </a>
+        </a> */}
       </div>
     </div>
     </section>

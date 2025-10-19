@@ -4,10 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter, usePathname } from "next/navigation";
-import { TextRoll } from "./TextRoll"; // <- adjust path as needed
-import ContactButton from "../ContactButton"; // <-- your button
-import ContactButton_1 from "../ContactButton_1";
-
+import ContactButton from "../ContactButton";
 
 interface NavItem {
   name: string;
@@ -25,18 +22,24 @@ const FloatingNav: React.FC<FloatingNavbarProps> = ({ navItems }) => {
   const router = useRouter();
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-
-  // show controls whether navbar is visible (true) or hidden (false)
   const [show, setShow] = useState(true);
-
-  // Use a ref for lastScrollY so the handler doesn't close over stale state
   const lastScrollYRef = useRef<number>(0);
 
+  // Smooth scroll to sections or push external routes
   const handleNavigate = (href: string) => {
     setOpen(false);
-    router.push(href);
+
+    if (href.startsWith("#")) {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      router.push(href);
+    }
   };
 
+  // Show/hide navbar on scroll
   useEffect(() => {
     const threshold = 10;
     const handleScroll = () => {
@@ -64,25 +67,29 @@ const FloatingNav: React.FC<FloatingNavbarProps> = ({ navItems }) => {
       }`}
     >
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        {/* Logo */}
         <Link href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
           <Image
-            src="/Nexrah-White.png"
-            alt="logo"
-            width={46}
-            height={32}
-            className="h-auto w-auto"
+            onClick={() => handleNavigate("#hero")}
+            src="/nexrah_logo_nav.png"
+            alt="Nexrah Logo"
+            width={70}
+            height={55}
+            className="
+              h-auto w-auto 
+              scale-100
+              sm:scale-110 
+              md:scale-125 
+              lg:scale-140 
+              xl:scale-150
+              transition-transform duration-300
+            "
             priority
           />
-          <span className="hidden md:inline-block self-center lg:text-2xl font-semibold whitespace-nowrap dark:text-white">
-            NEXRAH
-          </span>
         </Link>
 
         {/* Right controls */}
         <div className="flex md:order-2 items-center gap-3">
-         
-          <ContactButton href="/contact" label="Contact Us" />
+          <ContactButton  onClick={() => handleNavigate("#contact")} />
 
           {/* Mobile hamburger */}
           <button
@@ -110,12 +117,10 @@ const FloatingNav: React.FC<FloatingNavbarProps> = ({ navItems }) => {
         >
           <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium rounded-lg bg-white/5 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:bg-transparent dark:bg-gray-900/10 md:dark:bg-transparent">
             {navItems.map((item, idx) => {
-              const isActive = pathname === item.link;
               const baseClasses =
-                "inline-block py-2 px-3 rounded-sm md:p-0 transform transition-transform duration-200";
-              const activeClasses = isActive
-                ? "text-white bg-amber-700/80 md:bg-transparent md:text-amber-400"
-                : "text-gray-900 hover:bg-white/20 md:hover:bg-transparent md:hover:text-amber-400 dark:text-white dark:hover:bg-gray-700/40 md:dark:hover:bg-transparent hover:-translate-y-1";
+                "inline-block py-2 px-3 rounded-md md:p-2 transform transition-all duration-300 ease-out";
+
+              const activeClasses = `text-gray-300 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-fuchsia-500 hover:to-[#0cc0df] hover:-translate-y-1 transition-all duration-300`;
 
               return (
                 <li key={item.link ?? idx}>
@@ -127,14 +132,8 @@ const FloatingNav: React.FC<FloatingNavbarProps> = ({ navItems }) => {
                     href={item.link}
                     className={`${baseClasses} ${activeClasses}`}
                   >
-                    {/* Mobile fallback: plain label */}
-                    <span className="md:hidden block">{item.name}</span>
-
-                    {/* Animated label: visible on md+ */}
-                    <span className="hidden md:inline-block">
-                      <TextRoll center className="text-lg md:text-2xl lg:text-3xl uppercase leading-[0.8] tracking-[-0.03em]">
-                        {item.name}
-                      </TextRoll>
+                    <span className="uppercase leading-[0.8] tracking-[-0.03em]">
+                      {item.name}
                     </span>
                   </a>
                 </li>

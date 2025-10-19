@@ -9,46 +9,46 @@ import ProjectsPage from "@/components/ProjectsPage";
 import  TestimonialSection  from "@/components/TestimonialSection";
 import TextMarqueePage from '@/components/TextMarqueePage';
 import AboutUs from "@/components/AboutUs";
+import TechnologiesPage from "@/components/TechnologiesPage";
 export default function Home() {
   return (
     <>
-      <main className="relative bg-black flex justify-center items-center flex-col overflow-hidden">
-      <div className="w-full">
-     
-      
-        <FloatingNav navItems={navItems} />
-     <section className="hero">
-      <div className="h-screen w-screen">
-  <Hero />
-  </div>
-</section>
+ <main className="relative bg-black flex justify-center items-center flex-col overflow-hidden">
+  <FloatingNav navItems={navItems} />
 
-<section>
-  <TextMarqueePage />
-</section>
+  <section id="hero" className="hero h-screen w-screen">
+    <Hero />
+  </section>
 
-<section>
-  <ProjectsPage />
-</section>
+  <section id="marquee">
+    <TextMarqueePage />
+  </section>
 
-<section>
-  <AboutUs />
-</section>
+  <section id="technologies">
+    <TechnologiesPage />
+  </section>
 
-<section>
-  <TestimonialSection />
-</section>
+  <section id="projects">
+    <ProjectsPage />
+  </section>
 
-<section>
-  <Contact />
-</section>
+  <section id="about">
+    <AboutUs />
+  </section>
 
-<section className="footer">
-  <Footer />
-</section>
+  <section id="testimonials">
+    <TestimonialSection />
+  </section>
 
-      </div>
-    </main>
+  <section id="contact">
+    <Contact />
+  </section>
+
+  <section id="footer" className="footer">
+    <Footer />
+  </section>
+</main>
+
     </>
   );
 }
