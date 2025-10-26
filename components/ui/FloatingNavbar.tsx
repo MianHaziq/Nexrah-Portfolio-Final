@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { useRouter, usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 import ContactButton from "../ContactButton";
 
 interface NavItem {
@@ -15,132 +15,137 @@ interface FloatingNavbarProps {
   navItems: NavItem[];
 }
 
-/**
- * FloatingNav with TextRoll animation for md+ screens and plain text fallback on mobile.
- */
 const FloatingNav: React.FC<FloatingNavbarProps> = ({ navItems }) => {
   const router = useRouter();
-  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [show, setShow] = useState(true);
-  const lastScrollYRef = useRef<number>(0);
+  const lastScrollYRef = useRef(0);
 
-  // Smooth scroll to sections or push external routes
   const handleNavigate = (href: string) => {
     setOpen(false);
-
     if (href.startsWith("#")) {
       const element = document.querySelector(href);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
+      if (element) element.scrollIntoView({ behavior: "smooth" });
     } else {
       router.push(href);
     }
   };
 
-  // Show/hide navbar on scroll
+  // hide/show navbar on scroll
   useEffect(() => {
     const threshold = 10;
     const handleScroll = () => {
-      const currentY = window.scrollY || 0;
+      const currentY = window.scrollY;
       const lastY = lastScrollYRef.current;
-
-      if (currentY - lastY > threshold && currentY > 50) {
-        setShow(false);
-      } else if (lastY - currentY > threshold) {
-        setShow(true);
-      }
+      if (currentY - lastY > threshold && currentY > 50) setShow(false);
+      else if (lastY - currentY > threshold) setShow(true);
       lastScrollYRef.current = currentY;
     };
-
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <nav
-      className={`fixed w-full z-20 top-0 left-0 transition duration-300 ease-in-out backdrop-blur-md bg-white/10 dark:bg-gray-900/20 border-b border-white/10 ${
+      className={`fixed w-full z-30 top-0 left-0 transition-transform duration-300 ease-in-out backdrop-blur-md bg-white/10 dark:bg-gray-900/20 border-b border-white/10 ${
         show ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
       }`}
     >
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <Link href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
+      <div className="max-w-screen-xl mx-auto flex items-center justify-between px-4 py-3 md:py-4">
+        {/* LOGO (Left) */}
+        <div className="flex items-center gap-3">
           <Image
-            onClick={() => handleNavigate("#hero")}
             src="/nexrah_logo_nav.png"
             alt="Nexrah Logo"
             width={70}
             height={55}
-            className="
-              h-auto w-auto 
-              scale-100
-              sm:scale-110 
-              md:scale-125 
-              lg:scale-140 
-              xl:scale-150
-              transition-transform duration-300
-            "
+            className="cursor-pointer transition-transform duration-300 hover:scale-105"
+            onClick={() => handleNavigate("#hero")}
             priority
           />
-        </Link>
-
-        {/* Right controls */}
-        <div className="flex md:order-2 items-center gap-3">
-          <ContactButton  onClick={() => handleNavigate("#contact")} />
-
-          {/* Mobile hamburger */}
-          <button
-            onClick={() => setOpen((s) => !s)}
-            aria-controls="navbar-sticky"
-            aria-expanded={open}
-            aria-label={open ? "Close main menu" : "Open main menu"}
-            type="button"
-            className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/30 dark:text-gray-300"
-          >
-            <svg className="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-              {open ? (
-                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2 2l13 10M15 2L2 12" />
-              ) : (
-                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15" />
-              )}
-            </svg>
-          </button>
         </div>
 
-        {/* Nav links */}
-        <div
-          id="navbar-sticky"
-          className={`items-center justify-between w-full md:flex md:w-auto md:order-1 ${open ? "block" : "hidden"}`}
+        {/* NAV LINKS (Center on desktop) */}
+        <ul className="hidden md:flex flex-1 justify-center items-center gap-8 font-medium text-gray-300">
+          {navItems.map((item, idx) => (
+            <li key={idx}>
+              <a
+                href={item.link}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavigate(item.link);
+                }}
+                className="uppercase tracking-wide hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-fuchsia-500 hover:to-[#0cc0df] transition-all duration-300"
+              >
+                {item.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        {/* CONTACT BUTTON (Right on desktop) */}
+        <div className="hidden md:flex items-center">
+          <ContactButton onClick={() => handleNavigate("#contact")} />
+        </div>
+
+        {/* HAMBURGER (Mobile only) */}
+        <button
+          onClick={() => setOpen((s) => !s)}
+          aria-controls="navbar-menu"
+          aria-expanded={open}
+          type="button"
+          className="md:hidden inline-flex items-center justify-center p-2 text-gray-300 hover:text-white hover:bg-white/20 rounded-md focus:outline-none focus:ring-2 focus:ring-white/40"
         >
-          <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium rounded-lg bg-white/5 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:bg-transparent dark:bg-gray-900/10 md:dark:bg-transparent">
-            {navItems.map((item, idx) => {
-              const baseClasses =
-                "inline-block py-2 px-3 rounded-md md:p-2 transform transition-all duration-300 ease-out";
+          {open ? (
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          ) : (
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          )}
+        </button>
+      </div>
 
-              const activeClasses = `text-gray-300 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-fuchsia-500 hover:to-[#0cc0df] hover:-translate-y-1 transition-all duration-300`;
-
-              return (
-                <li key={item.link ?? idx}>
-                  <a
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleNavigate(item.link);
-                    }}
-                    href={item.link}
-                    className={`${baseClasses} ${activeClasses}`}
-                  >
-                    <span className="uppercase leading-[0.8] tracking-[-0.03em]">
-                      {item.name}
-                    </span>
-                  </a>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
+      {/* MOBILE MENU */}
+      <div
+        id="navbar-menu"
+        className={`md:hidden transition-all duration-300 overflow-hidden ${
+          open ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        <ul className="flex flex-col items-center gap-4 py-4 bg-black/80 backdrop-blur-lg border-t border-white/10 text-gray-300">
+          {navItems.map((item, idx) => (
+            <li key={idx}>
+              <a
+                href={item.link}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavigate(item.link);
+                }}
+                className="block py-2 px-4 rounded-md hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-fuchsia-500 hover:to-[#0cc0df] transition-all duration-300"
+              >
+                {item.name}
+              </a>
+            </li>
+          ))}
+          <li className="w-full flex justify-center">
+            <ContactButton onClick={() => handleNavigate("#contact")} />
+          </li>
+        </ul>
       </div>
     </nav>
   );

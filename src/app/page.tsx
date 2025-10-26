@@ -10,6 +10,7 @@ import  TestimonialSection  from "@/components/TestimonialSection";
 import TextMarqueePage from '@/components/TextMarqueePage';
 import AboutUs from "@/components/AboutUs";
 import TechnologiesPage from "@/components/TechnologiesPage";
+import MarqueeTechScroll from "@/components/ui/annimation/MarqueeTechScroll";
 export default function Home() {
   return (
     <>
@@ -20,15 +21,19 @@ export default function Home() {
     <Hero />
   </section>
 
-  <section id="marquee">
+<section id="marquee" className="relative min-h-screen w-full z-20">
     <TextMarqueePage />
   </section>
 
-  <section id="technologies">
+<section id="technologies" className="relative min-h-screen w-full z-30">
     <TechnologiesPage />
   </section>
 
-  <section id="projects">
+
+        <MarqueeTechScroll />
+
+
+<section id="projects" className="relative min-h-screen w-full z-10">
     <ProjectsPage />
   </section>
 

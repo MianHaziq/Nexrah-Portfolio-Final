@@ -171,3 +171,8 @@
     @apply bg-background text-foreground;
   }
 }
+
+body {
+  overflow-x: hidden;
+  overscroll-behavior: none;
+}
